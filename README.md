@@ -1,7 +1,6 @@
-Utilities
-=========
+# Utilities
 
-* How to get a refresh token from Google?
+## How to get a refresh token from Google?
 
 - Get a OAuth2 Client here: https://code.google.com/apis/console/
 - Follow instructions here: https://developers.google.com/accounts/docs/OAuth2WebServer#offline
