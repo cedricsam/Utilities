@@ -30,7 +30,7 @@ out = {
     "attributionLink": "http://cedric.sam.name/"
 }
 i = 0
-for k in r.keys():
+for k in r:
     v = r[k]
     if v in ["num", "int"]:
         typ = "NUMBER"
