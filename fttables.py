@@ -17,7 +17,9 @@ if len(sys.argv) > 2:
     description = sys.argv[2]
 pgconn = mypass.getConn()
 #r = pgconn.query("SELECT * FROM %s LIMIT 1" % tablename).dictresult()
-r = pgconn.get_attnames(tablename)
+#r = pgconn.get_attnames(tablename)
+sql = "select column_name, udt_name from information_schema.columns WHERE table_name = '%s' order by ordinal_position" % tablename
+res = pgconn.query(sql).getresult()
 
 out = {
     "kind": "fusiontables#table",
@@ -30,15 +32,17 @@ out = {
     "attributionLink": "http://cedric.sam.name/"
 }
 i = 0
-for k in r:
-    v = r[k]
-    if v in ["num", "int"]:
+#print res
+for r in res:
+    k = r[0]
+    v = r[1]
+    if v in ["numeric"] or v.startswith("int"):
         typ = "NUMBER"
-    elif v in ["date"]:
+    elif v in ["date"] or v.startswith("time"):
         typ = "DATETIME"
-    elif v in ["text"]:
+    elif v in ["varchar"]:
         typ = "STRING"
-    elif k in ["the_geom", "geometry", "point", "boundary", "geo"]:
+    elif v in ["geometry"] or k in ["lat", "lng", "latitude", "longitude"]:
         typ = "LOCATION"
     else:
         typ = "STRING"
