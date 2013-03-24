@@ -1,25 +1,26 @@
 #!/bin/bash
 
-if [ $# -lt 2 ]
+if [ $# -lt 3 ]
 then
-    echo "ftimportrows.sh [table sql] [ft table id] [OPT: starting db row] [OPT: chunk size] [OPT: seconds to wait between FT imports]"
+    echo "ftimportrows.sh [table sql] [ft table id] [key] [OPT: starting db row] [OPT: chunk size] [OPT: seconds to wait between FT imports]"
     exit
 fi
 TABLENAME=$1
 TABLEID=$2
+KEY=$3
 START=0
 ROWS=100000
 WAITSECS=900
 
-if [ $# -gt 2 ]
+if [ $# -gt 3 ]
 then
-    START=$3
-    if [ $# -gt 3 ]
+    START=$4
+    if [ $# -gt 4 ]
     then
-        ROWS=$4
-        if [ $# -gt 4 ]
+        ROWS=$5
+        if [ $# -gt 5 ]
         then
-            WAITSECS=$5
+            WAITSECS=$6
         fi
     fi
 fi
@@ -38,7 +39,7 @@ AUTH_TOKEN="${TOKEN_TYPE} ${ACCESS_TOKEN}"
 for i in `seq ${START} ${PAGES}`
 do
     let OFFSET=$i*$ROWS
-    SQL="SELECT * FROM ${TABLENAME} LIMIT ${ROWS} OFFSET ${OFFSET}"
+    SQL="SELECT * FROM ${TABLENAME} ORDER BY ${KEY} LIMIT ${ROWS} OFFSET ${OFFSET} "
     echo "$SQL"
     FNAME=${TABLENAME}.${OFFSET}.csv
     psql -h 127.0.0.1 -U lp -c "\\copy (${SQL}) to '${FNAME}' csv header"
