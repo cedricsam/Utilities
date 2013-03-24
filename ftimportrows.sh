@@ -26,6 +26,7 @@ fi
 
 COUNT=`psql -h 127.0.0.1 -U lp -tAc "SELECT COUNT(*) FROM ${TABLENAME}"`
 let PAGES=$COUNT/$ROWS
+let START=$START/$ROWS
 
 ACCESS_TOKEN=`grep access_token ${HOME}/google.fusiontables.token | cut -d\" -f4`
 TOKEN_TYPE=`grep token_type ${HOME}/google.fusiontables.token | cut -d\" -f4`
@@ -58,7 +59,7 @@ do
         cat ${FNAME}.out
         break
     else
-        rm ${FNAME} ${FNAME}.out
+        rm ${FNAME} # ${FNAME}.out
     fi
     sleep ${WAITSECS}
 done
