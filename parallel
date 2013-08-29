@@ -1,0 +1,113 @@
+#!/bin/bash
+NUM=0
+QUEUE=""
+MAX_NPROC=2 # default
+MAX_TIME=600 # one hour
+REPLACE_CMD=0 # no replacement by default
+SECS_INTERVAL="0.1"
+USAGE="A simple wrapper for running processes in parallel.
+Usage: `basename $0` [-h] [-r] [-j nb_jobs] command arg_list
+        -h              Shows this help
+        -r              Replace asterix * in the command string with argument
+        -j nb_jobs      Set number of simultanious jobs [2]
+        -t time         Seconds to timeout
+        -s sleep_time   Time to sleep between parallel processes
+ Examples:
+        `basename $0` somecommand arg1 arg2 arg3
+        `basename $0` -j 3 \"somecommand -r -p\" arg1 arg2 arg3
+        `basename $0` -j 6 -r \"convert -scale 50% * small/small_*\" *.jpg"
+
+function queue {
+        QUEUE="$QUEUE $1"
+        NUM=$(($NUM+1))
+}
+
+function regeneratequeue {
+        OLDREQUEUE=$QUEUE
+        QUEUE=""
+        NUM=0
+        for PID in $OLDREQUEUE
+        do
+                if [ -d /proc/$PID  ] ; then
+                        QUEUE="$QUEUE $PID"
+                        NUM=$(($NUM+1))
+                fi
+        done
+}
+
+function checkqueue {
+        OLDCHQUEUE=$QUEUE
+        for PID in $OLDCHQUEUE
+        do
+                if [ ! -d /proc/$PID ] ; then
+                        regeneratequeue # at least one PID has finished
+                        break
+                fi
+        done
+}
+
+function killqueue {
+    for PID in $QUEUE
+    do
+        kill $PID
+    done
+}
+
+# parse command line
+if [ $# -eq 0 ]; then #  must be at least one arg
+        echo "$USAGE" >&2
+        exit 1
+fi
+
+while getopts t:j:s:rh OPT; do # "j:" waits for an argument "h" doesnt
+    case $OPT in
+        h)      echo "$USAGE"
+                exit 0 ;;
+        j)      MAX_NPROC="$OPTARG" ;;
+        t)      MAX_TIME="$OPTARG" ;;
+        s)      SECS_INTERVAL="$OPTARG" ;;
+        r)      REPLACE_CMD=1 ;;
+        \?)     # getopts issues an error message
+                echo "$USAGE" >&2
+                exit 1 ;;
+    esac
+done
+
+# Main program
+echo Using $MAX_NPROC parallel threads
+shift `expr $OPTIND - 1` # shift input args, ignore processed args
+COMMAND=$1
+shift
+
+TIMESTART=`date +%s`
+let TIMEEND=$TIMESTART+$MAX_TIME
+
+for INS in $* # for the rest of the arguments
+do
+        # DEFINE COMMAND
+        if [ $REPLACE_CMD -eq 1 ]; then
+                CMD=${COMMAND//"*"/$INS}
+        else
+                CMD="$COMMAND $INS" #append args
+        fi
+        echo "Running $CMD" 
+
+        $CMD &
+        # DEFINE COMMAND END
+
+        PID=$!
+        queue $PID
+
+        while [ $NUM -ge $MAX_NPROC ]; do
+                checkqueue
+                if [ `date +%s` -gt $TIMEEND ] 
+                then
+                    echo "Expired after running $MAX_TIME seconds: attempt to kill the queue now"
+                    killqueue
+                    echo "Sent kill signal to the queue. Exiting..."
+                    break
+                fi
+        done
+        sleep $SECS_INTERVAL
+done
+wait # wait for all processes to finish before exit
