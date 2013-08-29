@@ -28,7 +28,7 @@ out = {
     ],
     "description": description,
     "isExportable": False,
-    "attribution": "Cedric Sam",
+    "attribution": "Cédric Sam",
     "attributionLink": "http://cedric.sam.name/"
 }
 i = 0
@@ -42,7 +42,7 @@ for r in res:
         typ = "DATETIME"
     elif v in ["varchar"]:
         typ = "STRING"
-    elif v in ["geometry"] or k in ["lat", "lng", "latitude", "longitude"]:
+    elif v in ["geometry"] or k in ["lat", "lng", "latitude", "longitude", "kml", "bounds", "point"]:
         typ = "LOCATION"
     else:
         typ = "STRING"

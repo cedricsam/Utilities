@@ -12,5 +12,5 @@ AUTH_TOKEN="${TOKEN_TYPE} ${ACCESS_TOKEN}"
 
 TABLEDATA=`${HOME}/bin/fttables.py $1`
 
-#echo $TABLEDATA
+echo $TABLEDATA
 curl "https://www.googleapis.com/fusiontables/v1/tables" -H "Authorization: ${AUTH_TOKEN}" -H "Content-Type: application/json" -d "${TABLEDATA}"

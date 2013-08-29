@@ -42,8 +42,8 @@ do
     fi
     #URL="http://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=fr&region=ca&address=${address_url}&bounds=${BBOX_MTL}&components=country:CA"
     #URL="http://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=fr&region=ca&address=${address_url}&components=administrative_area:QC|country:CA"
-    URL="http://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=fr&address=${address_url}"
-    #URL="http://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=fr&region=ca&address=${address_url}&components=administrative_area:Montreal|administrative_area:QC|country:CA"
+    #URL="http://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=fr&address=${address_url}"
+    URL="http://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=fr&region=ca&address=${address_url}&components=administrative_area:Montreal|administrative_area:QC|country:CA"
     echo "${URL}"
     curl -s "${URL}" -o "${FO}"
     echo "${FO}"
