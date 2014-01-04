@@ -93,7 +93,7 @@ for x in el:
                 else:
                     val = None
                     break
-        if a in numcols and val is not None:
+        if a in numcols and val is not None and (type(val) is types.StringType or type(val) is types.UnicodeType):
             val = re.sub(r"[ ,\$a-zA-Z_]+", "", val)
         #if a in datecols and val is not None:
         #    val = datetime.datetime.strptime(val, dateformatin).strftime(dateformatout)
