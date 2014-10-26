@@ -31,8 +31,6 @@ request = urllib2.Request(url, headers=headers)
 response = urllib2.urlopen(request)
 spreadsheet = response.read()
 
-#print spreadsheet
-
 keys = list()
 
 try:
@@ -42,9 +40,16 @@ except Exception as e:
     sys.exit()
 
 entries = list()
+
+for entry in dom.getElementsByTagName('entry'):
+    for cell in entry.childNodes:
+	if cell.tagName.startswith("gsx:"):
+	    row_tag = cell.tagName.split(":")[1]
+            if row_tag not in keys:
+                keys.append(row_tag)
+
 for entry in dom.getElementsByTagName('entry'):
     row = dict()
-    kys = list()
     for cell in entry.childNodes:
 	if cell.tagName.startswith("gsx:"):
 	    row_tag = cell.tagName.split(":")[1]
@@ -68,12 +73,8 @@ for entry in dom.getElementsByTagName('entry'):
                         row[row_tag] = cell.firstChild.nodeValue.encode("utf8")
                     except:
                         row[row_tag] = cell.firstChild.nodeValue
-                if row_tag not in kys:
-                    kys.append(row_tag)
 	    except:
 		pass
-    if len(keys) <= 0:
-        keys = kys
     entries.append(row)
 
 cw = csv.DictWriter(sys.stdout, keys)
