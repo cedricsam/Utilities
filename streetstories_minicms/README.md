@@ -19,4 +19,4 @@
 
 - Link to the Street Stories project (not by us): http://canvas.challengepost.com/submissions/30704-street-stories
 - Implementation by South China Morning Post for Umbrella Revolution (by us): http://www.scmp.com/news/hong-kong/article/1659355/multimedia-tracing-moments-occupy-hong-kongs-streets
-- Example of our Google Sheets: https://docs.google.com/spreadsheets/d/1ure7af4zsHwJSU\_DAH7Cdx9J26mf1c1n9mb\_BSDXdFI/edit?usp=sharing
+- Example of our Google Sheets: https://docs.google.com/spreadsheets/d/1ure7af4zsHwJSU_DAH7Cdx9J26mf1c1n9mb_BSDXdFI/edit?usp=sharing
