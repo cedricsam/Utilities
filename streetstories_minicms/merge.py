@@ -5,6 +5,8 @@ import os
 import json
 import csv
 
+# Takes two CSV files, 1st is slides.csv and 2nd is places.csv
+
 fslides = open(sys.argv[1],"r")
 fplaces = open(sys.argv[2],"r")
 

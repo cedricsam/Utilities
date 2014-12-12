@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Streets of Occupy</title>
+    <meta property="fb:app_id" content="282931841805811"/>
+    <meta property="og:site_name" content="South China Morning Post"/>
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://multimedia.scmp.com/occupystreets/" />
+    <meta property="og:title" content="Streets of Occupy"/>
+    <meta property="og:description" content="Hong Kong's civil disobedience movement, known around the world as the “Umbrella Revolution” is expected to go through a crucial moment this week with the announced clearance of all remaining protest sites, leaving organisers to make decisions on where to take the democracy movement next. It has been more than 70 days since the beginning of the deepest political and social crisis to hit the city since the handover in 1997. With this immersive multimedia, we take you to the places where history was made."/>
+    <meta property="og:image" content="http://www.scmp.com/sites/default/files/styles/620x356/public/2014/12/10/streets_of_occupy.png?itok=e_5zOcXi"/>
+    <link rel="canonical" href="http://multimedia.scmp.com/occupystreets/" />
+    <link rel="shortcut icon" href="http://www.scmp.com/favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/foundation-icons.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Load the Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyC3YWeE7FKhyFVWH56bFkJ8NXAidUCRPvw"></script>
+    <!--script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script-->
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+
+    <script src="js/slick.min.js"></script>
+
+    <!-- Load the Sounds of Street View code -->
+    <!-- <script src="sosv.min.js"></script> -->
+    <script src="howler.js"></script>
+    <script src="sosv_mod.js"></script>
+
+    <!-- <script src="data/ferguson.js"></script> -->
+    <script src="data/hongkong.js"></script>
+    <!-- App JS files -->
+    <script src="main.js"></script>
+  </head>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39246582-11', 'scmp.com');
+    ga('send', 'pageview');
+  </script>
+
+  <body>
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        //js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=282931841805811";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <nav class="top-bar" data-topbar role="navigation">
+      <a href="http://www.scmp.com/"><div class="logo">
+      </div></a>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Street Stories</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon">
+          <a href="#"><span>Menu</span></a>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li>
+            <div class="fb-share-button" data-href="http://multimedia.scmp.com/occupystreets/" data-layout="button_count"></div>
+          </li>
+          <li id="infoReturn" title="Introduction">
+            <a href="#"><i class="fi-info"></i></a>
+          </li>
+          <li id="creditsReturn" title="Credits">
+            <a href="#"><i class="fi-torsos"></i></a>
+          </li>
+          <li id="mapToggle" class="loading" title="Overhead map">
+            <a href="#"><i class="fi-map"></i></a>
+          </li>
+        </ul>
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="has-dropdown drop-adjust padding-shim">
+            <a href="#">Occupy Central</a>
+            <ul class="dropdown">
+              <li><a href="http://www.scmp.com/topics/occupy-central">Coverage on SCMP.com</a></li>
+              <li><a href="http://www.scmp.com/infographics/article/1608683/timelapses-major-protest-sites-hong-kong">Occupy Lapse</a></li>
+              <li><a href="http://multimedia.scmp.com/adolfo-umbrellas/">Adolfo’s Umbrellas</a></li>
+              <li><a href="http://www.scmp.com/infographics/article/1614415/infographic-riot-gear-how-occupy-protesters-and-police-stack">Infographic: Riot gear</a></li>
+              <li><a href="http://canvas.aljazeera.com/">Media in context</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
+    <div class="controls">
+      <div class="slider timeline">
+      </div>
+    </div>
+    <div id="sound-control" class="fi-volume">
+    </div>
+    <div id="blurb">
+        <!--div style="clear:both;height:24px;">
+            <button type="button" data-role="none" class="slick-prev">Previous</button>
+            <button type="button" data-role="none" class="slick-next">Next</button>
+        </div-->
+        <div class="index">View 1 of 15<br/><em>Use arrows in top bar to see more</em></div>
+        <div id="blurb-legend">
+            <h3>How to use this immersive</h3>
+            <div class="howto">
+                <div><div class="images"><img src="img/icon-streetview-pegman.png" alt="pegman" width="25" height="28" style="margin-left:10px;"/></div> <div style="padding-top: 2px;">Move around! This uses Street View.</div></div>
+                <div><div class="images"><img src="img/prev.png" alt="previous" width="25" height="25"/><img src="img/next.png" alt="next" width="25" height="25"/></div> <div style="padding-top: 0px;">Travel to different places and times with arrows in the navigation bar.</div></div>
+                <div><div class="images"><div class="fi-volume" style="font-size:25px;padding-right:7px;"></div><div class="fi-volume-strike" style="font-size:25px;"></div></div> <div style="padding-top: 0px;">Some views have ambient sound. Toggle using this icon.</div></div>
+            </div>
+            <h3>Markers</h3>
+            <div class="markers">
+                <div><img src="img/video.png" alt="video" width="25" height="28"/> Video</div>
+                <div><img src="img/picture.png" alt="picture" width="25" height="28"/> Picture</div>
+            </div>
+            <!--div style="clear:both;margin-top:10px;">
+                Credits: <a href="javascript:void(0);" class="name">Who made this?</a>
+            </div-->
+        </div>
+    </div>
+    <div id="overlay">
+      <div class="intro">
+        <h1 class="text-center">Streets of Occupy</h1>
+        <p class="text-center book-width">Hong Kong's civil disobedience movement, known around the world as the “Umbrella Revolution”, lost a major stage on Thursday with the police clearance of the main protest site in Admiralty.</p>
+        <p class="text-center book-width">For 74 days, protesters occupied the streets of Hong Kong in what turned out to be the deepest political and social crisis to hit the city since the handover in 1997. With this immersive multimedia, we take you to the places where history was made.</p>
+        <p class="text-center book-width"><em>Published on December 12, 2014</em></p>
+        <!--p class="text-center book-width"><em>Updated on December 12, 2014</em></p-->
+        <div class="half">
+          <p class="text-center" id="storyStart">Tap anywhere to continue<br/>Use arrows at the top to jump to other protest sites</p>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <div class="intro">
+        <h1 class="text-center">Credits</h1>
+        <p class="text-center book-width">Contents by <em><a href="http://www.scmp.com/">South China Morning Post</a></em>: Cedric Sam, Emily Tsang, Ernest Kao, Phila Siu, Jennifer Ngo, Kristine Servando, Alex Millson, Wang Feng, <a href="http://scmp.tv/">SCMP Video</a> and staff photographers</p>
+        <p class="text-center book-width">Community photospheres by <a href="https://www.google.com/maps/views/profile/113476076542537131572">chichuen wong</a>, <a href="https://www.google.com/maps/views/profile/113011207442989578211">N john</a>, <a href="https://www.google.com/maps/views/profile/106061987439349444476">Adrian Chan</a>, <a href="https://www.google.com/maps/views/profile/110008681157214429689">Tommy Hung</a>, <a href="https://www.google.com/maps/views/profile/111746973654799626126?gl=us&pv=1&tab=1">Global For HK</a></p>
+        <p class="text-center book-width">Made using the <a href="https://github.com/hariananth/streetstories">Street Stories</a> platform created at <a href="http://canvas.aljazeera.com/">Canvas</a> by <a href="https://twitter.com/designhawg">@designhawg</a>, <a href="https://twitter.com/rabble">@rabble</a>, <a href="https://twitter.com/BassamAlasad">@BassamAlasad</a>, <a href="https://twitter.com/Yanazure">@Yanazure</a> and <a href="https://twitter.com/hariananth">@hariananth</a></p>
+        <div class="half">
+          <p class="text-center" id="credits-close">Click here to continue</p>
+        </div>
+      </div>
+    </div>
+    <div id="mappop-over">
+        <div id="closeMappop" class="fi-x"></div>
+    </div>
+    <div id="mappop">
+    </div>
+    <div id="pano"></div>
+    <script>
+      $(document).foundation();
+      // load map content via sosv
+      new SOSV("data/content.json");
+    </script>
+
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </body>
+</html>

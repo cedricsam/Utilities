@@ -1,5 +1,7 @@
 # Mini-CMS for Street Stories made at Canvas media innovation hackathon
 
+[Street Stories](http://canvas.challengepost.com/submissions/30704-street-stories) is a plaform made by @designhawg, @hariananth, @rabble and team at Al-Jazeera's Canvas hackathon that combines Street View imagery, sounds and media for an immersive guided tour experience. I saw their project and built a mini-CMS for it, implemented for a street story on [Hong Kong's Umbrella Revolution](http://www.scmp.com/news/hong-kong/article/1659355/multimedia-tracing-moments-occupy-hong-kongs-streets).
+
 ## Files
 
 - Combined with `spreadsheets2csv` in parent directory, you can generate JS code for the Street Stories platform using a Google Sheets document with two worksheets, one for slides and the other for places.
@@ -11,6 +13,7 @@
 - You would still have to manually customize `content.json` for your first slide and sounds
 - We left most of our contents files
 - Our `main.js` is slightly modified to accomodate our video delivery system (Vidly) and assumes you have a subdir called img/pics where all the photos go
+- `index.html` was also modified to accomodate an intro blurb for each slide
 
 ## Links
 
