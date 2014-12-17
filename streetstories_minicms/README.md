@@ -1,6 +1,6 @@
 # Mini-CMS for Street Stories made at Canvas media innovation hackathon
 
-[Street Stories](http://canvas.challengepost.com/submissions/30704-street-stories) is a plaform made by @designhawg, @hariananth, @rabble and team at Al-Jazeera's Canvas hackathon that combines Street View imagery, sounds and media for an immersive guided tour experience. I saw their project and built a mini-CMS for it, implemented for a street story on [Hong Kong's Umbrella Revolution](http://www.scmp.com/news/hong-kong/article/1659355/multimedia-tracing-moments-occupy-hong-kongs-streets).
+[Street Stories](http://canvas.challengepost.com/submissions/30704-street-stories) is a plaform made by @designhawg, @hariananth, @rabble, @BassamAlasad and @Yanazure at Al-Jazeera's Canvas hackathon that combines Street View imagery, sounds and media for an immersive guided tour experience. I saw their project and built a mini-CMS for it, implemented for a street story on [Hong Kong's Umbrella Revolution](http://www.scmp.com/news/hong-kong/article/1659355/multimedia-tracing-moments-occupy-hong-kongs-streets).
 
 ## Files
 
