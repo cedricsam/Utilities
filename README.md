@@ -5,7 +5,7 @@
 - Get a OAuth2 Client here: https://code.google.com/apis/console/
 - Follow instructions here: https://developers.google.com/accounts/docs/OAuth2WebServer#offline
 - Once you have an auth code, you must exchange it for a refresh token
-- The refresh token is another curl away, using the same URL, but setting the code (newly acquired), client\_id, client\_secret, redirect\_uri and grant\_type=authorization\_code
+- The refresh token is another curl away, using the same URL, but setting the code (newly acquired), client\_id, client\_secret, redirect\_uri and grant\_type=authorization\_code, using the url https://www.googleapis.com/oauth2/v3/token
 - Once you have the refresh token, setup a crontab at every 15 or 30 minutes to keep a fresh token for use on server at all times
 - Follow instructions here: https://developers.google.com/accounts/docs/OAuth2WebServer#refresh
 - It's another curl, but with client\_id, clien\_secret, refresh\_token (the one you just got) and grant\_type=refresh\_token
