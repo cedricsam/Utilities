@@ -24,7 +24,11 @@ ap.set_defaults(headers=False)
 
 args = ap.parse_args()
 
-js = json.loads(args.infile.read())
+try:
+    js = json.loads(args.infile.read())
+except:
+    print >> sys.stderr, args.infile
+    sys.exit()
 
 if "spatialReference" in js and "wkid" in js["spatialReference"]:
     spatialReference = js["spatialReference"]["wkid"]
@@ -45,7 +49,7 @@ for feature in js["features"]:
         r[a.lower()] = feature["attributes"][a]
     geomtype = "POLYGON"
     if "geometry" in feature:
-        r["geometry"] = re.sub(r" +", " ", re.sub(r"\], ?\[","|", re.sub(r"\]\], ?\[\[", ")|(", re.sub(r"\]\]\]$", "))", re.sub(r"^\[\[\[",geomtype+"((",str(feature["geometry"]["rings"]))))).replace("[","").replace("]","").replace(","," ").replace("|",","))
+        r["geometry"] = re.sub(r" +", " ", re.sub(r"\], ?\[","|", re.sub(r"\]\], ?\[\[", ")|(", re.sub(r"\]\]\]$", "))", re.sub(r"^\[\[\[","SRID="+spatialReference+";"+geomtype+"((",str(feature["geometry"]["rings"]))))).replace("[","").replace("]","").replace(","," ").replace("|",","))
     #r.time_fetched = time_fetched
     outrows.append(r)
 
