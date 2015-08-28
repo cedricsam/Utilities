@@ -108,11 +108,11 @@ if len(sys.argv) > 2:
                 max_id = int(sys.argv[i+1])
 try:
     if opt == 1:
-	url = "http://api.twitter.com/1.1/statuses/mentions.json?count=800&include_rts=true&include_entities=true"
+	url = "https://api.twitter.com/1.1/statuses/mentions.json?count=800&include_rts=true&include_entities=true"
     elif opt == 2:
-	url = "http://api.twitter.com/1.1/statuses/followers.json?user_id=" + user_id + "&include_entities=true&count=100"
+	url = "https://api.twitter.com/1.1/statuses/followers.json?user_id=" + str(user_id) + "&include_entities=true&count=100"
     elif opt == 3:
-	url = "http://api.twitter.com/1.1/users/show.json?screen_name=" + screen_name + "&include_entities=true&count=100"
+	url = "https://api.twitter.com/1.1/users/show.json?screen_name=" + screen_name + "&include_entities=true&count=100"
 	#res = pgconn.query("SELECT COUNT(*) FROM twitter_users WHERE screen_name = '%s' " % screen_name.replace("'","''"))
     	res = pgconn.get("twitter_users", { "screen_name": screen_name }, "screen_name")
 	if len(res) > 0 and not doupdate:
@@ -120,11 +120,11 @@ try:
 	    print "duplicate has been found: this script will exit..."
 	    sys.exit()
     elif opt == 4:
-	url = "http://api.twitter.com/1.1/statuses/user_timeline.json?user_id=" + str(user_id) + "&count=200&trim_user=0&include_rts=1&include_entities=1"
+	url = "https://api.twitter.com/1.1/statuses/user_timeline.json?user_id=" + str(user_id) + "&count=200&trim_user=0&include_rts=1&include_entities=1"
     elif opt == 5:
-	url = "http://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + screen_name + "&count=200&trim_user=1&include_rts=1&include_entities=1"
+	url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + screen_name + "&count=200&trim_user=1&include_rts=1&include_entities=1"
     elif opt == 6:
-	url = "http://api.twitter.com/1.1/statuses/show/%d.json" % tid
+	url = "https://api.twitter.com/1.1/statuses/show/%d.json" % tid
     else:
 	sys.exit()
 except pg.DatabaseError:

@@ -16,7 +16,7 @@ except:
     print "Missing Sheets Key"
     sys.exit()
 
-f_token = open("/home/csam/google.spreadsheets.token", "r")
+f_token = open("/home/csam/artist_scmp_com.google.spreadsheets.token", "r")
 token_txt = f_token.read()
 token = json.loads(token_txt)
 f_token.close()

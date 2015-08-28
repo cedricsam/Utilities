@@ -43,7 +43,11 @@ js = json.loads(f.read())
 out = list()
 el = js
 for x in base:
-    if re.search(r"[0-9]", x, len(x)-1) is not None:
+    try:
+        found = re.search(r"[0-9]", x, len(x)-1)
+    except Exception as e:
+        pass
+    if found >= 0:
         n = int(x[len(x)-1:len(x)])-1
         k = x[0:len(x)-1]
         if k not in el:
@@ -58,6 +62,8 @@ for x in base:
             break
         if x in el:
             el = el[x]
+        elif type(el) is types.ListType:
+            break
         else:
             el = None
             break

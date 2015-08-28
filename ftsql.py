@@ -19,7 +19,7 @@ if len(sys.argv) > 3:
     if sys.argv[3] == "csv":
         params["alt"] = "csv"
 
-url = "https://www.googleapis.com/fusiontables/v1/query"
+url = "https://www.googleapis.com/fusiontables/v2/query"
 
 f_token = open("/home/csam/google.fusiontables.token", "r")
 token_txt = f_token.read()
