@@ -14,6 +14,10 @@ ap.add_argument('infile', nargs='?', type=argparse.FileType('r'), const=sys.stdi
 ap.add_argument('outfile', nargs='?', type=argparse.FileType('a'), const=sys.stdout, default=sys.stdout)
 ap.add_argument('-sa', '--sub-array', nargs='?', help='Used if the data comes from an array inside each object')
 ap.add_argument('-fk', '--foreign-key', nargs='?', help='Key in parent object for sub-array')
+ap.add_argument('--headers', dest='headers', action='store_true')
+ap.add_argument('--no-headers', dest='headers', action='store_false')
+ap.set_defaults(headers=False)
+
 args = ap.parse_args()
 
 cols = args.cols.split(",")
@@ -26,7 +30,6 @@ cw = csv.DictWriter(args.outfile, cols)
 
 try:
     js = json.loads(args.infile.read())
-    cw.writeheader()
 except:
     sys.exit()
 
@@ -39,6 +42,9 @@ if args.sub_array is not None:
             if fk not in js[0] or fk in cols:
                 sys.exit()
             cols.insert(0, fk)
+
+if args.headers:
+    cw.writeheader()
 
 for row in js:
     fkvals = {}
