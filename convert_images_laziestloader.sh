@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Will convert images in the . directory, or the directories you specify (space-separated, quoted first arg on command-line)
+# The resulting images can be used for Laziest Loader, a JS library for lazy loading by NYT's Josh Williams: https://github.com/sjwilliams/laziestloader
+
 X1="1 .6 .25"
 worig=1500
 dirout="responsive"
